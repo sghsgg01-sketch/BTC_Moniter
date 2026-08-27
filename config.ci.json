@@ -1,0 +1,17 @@
+{
+  "_comment": "GitHub Actions 专用配置。这里绝不放密钥——密钥通过仓库 Secrets 注入环境变量，由程序自动读取并启用对应渠道。想调整提醒灵敏度改这个文件即可。",
+  "symbol": "BTCUSDT",
+  "levels": {
+    "daily": [120, 200, 350],
+    "weekly": [250, 350]
+  },
+  "touch_threshold_pct": 1.0,
+  "rearm_pct": 3.0,
+  "cooldown_minutes": 360,
+  "failure_alert_threshold": 8,
+  "notify": {
+    "macos": {
+      "enabled": false
+    }
+  }
+}

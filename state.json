@@ -1,0 +1,46 @@
+{
+  "levels": {
+    "BTCUSDT_daily_ema120": {
+      "side": "above",
+      "armed": true,
+      "last_alert_ts": 0.0,
+      "last_dist_pct": 15.7491,
+      "range_candle": null,
+      "source": "Binance"
+    },
+    "BTCUSDT_daily_ema200": {
+      "side": "above",
+      "armed": true,
+      "last_alert_ts": 0.0,
+      "last_dist_pct": 10.3948,
+      "range_candle": null,
+      "source": "Binance"
+    },
+    "BTCUSDT_daily_ema350": {
+      "side": "above",
+      "armed": true,
+      "last_alert_ts": 0.0,
+      "last_dist_pct": 2.8598,
+      "range_candle": null,
+      "source": "Binance"
+    },
+    "BTCUSDT_weekly_ema250": {
+      "side": "above",
+      "armed": true,
+      "last_alert_ts": 0.0,
+      "last_dist_pct": 26.6908,
+      "range_candle": null,
+      "source": "Binance"
+    },
+    "BTCUSDT_weekly_ema350": {
+      "side": "above",
+      "armed": true,
+      "last_alert_ts": 0.0,
+      "last_dist_pct": 48.2659,
+      "range_candle": null,
+      "source": "Binance"
+    }
+  },
+  "consecutive_failures": 0,
+  "failure_alerted": false
+}

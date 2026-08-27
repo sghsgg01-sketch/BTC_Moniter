@@ -1,0 +1,15 @@
+# 本机配置含 SendKey 等密钥，严禁提交到仓库
+# GitHub 上的密钥请放在仓库 Settings → Secrets 里
+config.json
+
+# 运行时产生的文件
+monitor.log
+launchd.log
+launchd.err.log
+.lock
+state.json.tmp.*
+
+__pycache__/
+*.pyc
+.DS_Store
+.claude/

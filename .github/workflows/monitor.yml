@@ -1,0 +1,50 @@
+name: BTC 均线监控
+
+on:
+  schedule:
+    # 每 30 分钟检查一次（UTC 时间；GitHub 的定时任务通常会延迟几分钟到十几分钟，
+    # 但因为程序会检查整根K线的最高/最低价，两次运行之间发生的触碰不会漏掉）
+    - cron: '*/30 * * * *'
+  workflow_dispatch:        # 支持在 Actions 页面手动点击运行
+
+# 允许把 state.json 提交回仓库，用于跨次运行记住"哪条均线已经提醒过"
+permissions:
+  contents: write
+
+# 同一时间只跑一个，避免两次运行同时改 state.json 造成冲突
+concurrency:
+  group: btc-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 执行检查
+        env:
+          BTC_MONITOR_CONFIG: config.ci.json
+          SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 btc_monitor.py check
+
+      - name: 保存提醒状态
+        run: |
+          if [ -z "$(git status --porcelain state.json)" ]; then
+            echo "状态无变化，无需提交"
+            exit 0
+          fi
+          git config user.name  "btc-monitor[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state.json
+          git commit -m "chore: 更新均线监控状态 [skip ci]"
+          # 极小概率与手动提交撞车，重试几次
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase --autostash && sleep 3
+          done
+          echo "::warning::state.json 推送失败，下次运行会重新计算状态"

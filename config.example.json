@@ -1,0 +1,31 @@
+{
+  "symbol": "BTCUSDT",
+  "levels": {
+    "daily": [120, 200, 350],
+    "weekly": [250, 350]
+  },
+  "touch_threshold_pct": 1.0,
+  "rearm_pct": 3.0,
+  "cooldown_minutes": 360,
+  "check_interval_seconds": 900,
+  "failure_alert_threshold": 8,
+  "notify": {
+    "serverchan": {
+      "enabled": false,
+      "sendkey": "在 https://sct.ftqq.com 微信扫码登录后获取 SendKey 填到这里"
+    },
+    "pushplus": {
+      "enabled": false,
+      "token": "在 https://www.pushplus.plus 微信扫码登录后获取 token 填到这里"
+    },
+    "telegram": {
+      "enabled": false,
+      "bot_token": "找 @BotFather 创建机器人获取 token",
+      "chat_id": "找 @userinfobot 获取你的数字 chat_id",
+      "proxy": ""
+    },
+    "macos": {
+      "enabled": true
+    }
+  }
+}
