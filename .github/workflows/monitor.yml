@@ -50,11 +50,22 @@ jobs:
           fi
           git config user.name  "btc-monitor[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state.json
-          git commit -m "chore: 更新均线监控状态 [skip ci]"
-          # 极小概率与手动提交撞车，重试几次
+          # state.json 是"最后写入者胜出"的文件，与远程做合并/变基只会冲突
+          # （重跑旧运行、或运行期间有人推送时必然发生）。
+          # 正确做法是把刚算出的内容直接叠加到远程最新提交之上。
+          cp state.json "$RUNNER_TEMP/state.new.json"
           for i in 1 2 3; do
-            git push && exit 0
-            git pull --rebase --autostash && sleep 3
+            git fetch -q origin main
+            git reset -q --hard FETCH_HEAD
+            cp "$RUNNER_TEMP/state.new.json" state.json
+            if [ -z "$(git status --porcelain state.json)" ]; then
+              echo "远程状态已是最新，无需提交"; exit 0
+            fi
+            git add state.json
+            git commit -q -m "chore: 更新均线监控状态 [skip ci]"
+            # 用 HEAD:main，即使处于分离头指针（重跑时）也能正确推送
+            git push -q origin HEAD:main && exit 0
+            echo "第 $i 次推送被拒（远程有新提交），重新叠加后重试"
+            sleep 3
           done
           echo "::warning::state.json 推送失败，下次运行会重新计算状态"
