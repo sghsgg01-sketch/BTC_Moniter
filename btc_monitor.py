@@ -530,8 +530,10 @@ def cmd_test_notify(cfg):
                if (cfg["notify"].get(name) or {}).get("enabled")]
     print("已启用渠道: %s；发送成功: %d 个" % (", ".join(enabled) or "无", n))
     if not enabled:
-        print("请编辑 config.json 启用至少一个通知渠道")
-    return 0 if (n > 0 or not enabled) else 1
+        print("没有任何已启用的通知渠道。本机请编辑 config.json；"
+              "GitHub Actions 请确认已添加 SERVERCHAN_SENDKEY 等 Secret。")
+    # 明确的测试命令：一条都没发出去就是失败，让 CI 直接标红
+    return 0 if n > 0 else 1
 
 
 def cmd_daemon(cfg):

@@ -6,6 +6,15 @@ on:
     # 但因为程序会检查整根K线的最高/最低价，两次运行之间发生的触碰不会漏掉）
     - cron: '*/30 * * * *'
   workflow_dispatch:        # 支持在 Actions 页面手动点击运行
+    inputs:
+      mode:
+        description: '运行模式'
+        required: true
+        default: check
+        type: choice
+        options:
+          - check         # 正常检查均线，触发条件满足才推送
+          - test-notify   # 立刻发一条测试消息，验证推送通道（不影响提醒状态）
 
 # 允许把 state.json 提交回仓库，用于跨次运行记住"哪条均线已经提醒过"
 permissions:
@@ -21,16 +30,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: 执行检查
+        # 定时触发时 inputs.mode 为空，回落到 check
         env:
           BTC_MONITOR_CONFIG: config.ci.json
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 btc_monitor.py check
+        run: python3 btc_monitor.py "${{ inputs.mode || 'check' }}"
 
       - name: 保存提醒状态
         run: |
