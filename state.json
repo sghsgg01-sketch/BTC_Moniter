@@ -4,7 +4,7 @@
       "side": "above",
       "armed": false,
       "last_alert_ts": 1793327529.0453568,
-      "last_dist_pct": 0.7254,
+      "last_dist_pct": 0.9409,
       "range_candle": 1793318400000,
       "source": "Binance"
     },
@@ -12,7 +12,7 @@
       "side": "above",
       "armed": false,
       "last_alert_ts": 1793392854.1746645,
-      "last_dist_pct": 1.544,
+      "last_dist_pct": 1.7627,
       "range_candle": 1793318400000,
       "source": "Binance"
     },
@@ -20,7 +20,7 @@
       "side": "above",
       "armed": false,
       "last_alert_ts": 1793314572.5574799,
-      "last_dist_pct": -1.0532,
+      "last_dist_pct": -0.839,
       "range_candle": 1793232000000,
       "source": "Binance"
     },
@@ -28,7 +28,7 @@
       "side": "above",
       "armed": true,
       "last_alert_ts": 0.0,
-      "last_dist_pct": 21.0935,
+      "last_dist_pct": 21.3545,
       "range_candle": null,
       "source": "Binance"
     },
@@ -36,7 +36,7 @@
       "side": "above",
       "armed": true,
       "last_alert_ts": 0.0,
-      "last_dist_pct": 40.8867,
+      "last_dist_pct": 41.1908,
       "range_candle": null,
       "source": "Binance"
     }
