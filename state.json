@@ -2,17 +2,17 @@
   "levels": {
     "BTCUSDT_daily_ema120": {
       "side": "below",
-      "armed": false,
+      "armed": true,
       "last_alert_ts": 1793893516.224842,
-      "last_dist_pct": -2.7074,
+      "last_dist_pct": -3.8705,
       "range_candle": 1793836800000,
       "source": "Binance"
     },
     "BTCUSDT_daily_ema200": {
       "side": "below",
-      "armed": false,
+      "armed": true,
       "last_alert_ts": 1793893516.224842,
-      "last_dist_pct": -2.0042,
+      "last_dist_pct": -3.1831,
       "range_candle": 1793836800000,
       "source": "Binance"
     },
@@ -20,7 +20,7 @@
       "side": "below",
       "armed": true,
       "last_alert_ts": 1793915706.3197463,
-      "last_dist_pct": -4.4356,
+      "last_dist_pct": -5.5902,
       "range_candle": 1793836800000,
       "source": "Binance"
     },
@@ -28,7 +28,7 @@
       "side": "above",
       "armed": true,
       "last_alert_ts": 0.0,
-      "last_dist_pct": 16.7268,
+      "last_dist_pct": 15.3219,
       "range_candle": null,
       "source": "Binance"
     },
@@ -36,7 +36,7 @@
       "side": "above",
       "armed": true,
       "last_alert_ts": 0.0,
-      "last_dist_pct": 35.7027,
+      "last_dist_pct": 34.0668,
       "range_candle": null,
       "source": "Binance"
     }
