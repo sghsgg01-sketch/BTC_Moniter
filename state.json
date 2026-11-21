@@ -4,7 +4,7 @@
       "side": "below",
       "armed": true,
       "last_alert_ts": 1793893516.224842,
-      "last_dist_pct": -21.4775,
+      "last_dist_pct": -19.5536,
       "range_candle": 1793836800000,
       "source": "Binance"
     },
@@ -12,7 +12,7 @@
       "side": "below",
       "armed": true,
       "last_alert_ts": 1793893516.224842,
-      "last_dist_pct": -21.7951,
+      "last_dist_pct": -19.8685,
       "range_candle": 1793836800000,
       "source": "Binance"
     },
@@ -20,7 +20,7 @@
       "side": "below",
       "armed": true,
       "last_alert_ts": 1793915706.3197463,
-      "last_dist_pct": -24.1412,
+      "last_dist_pct": -22.2657,
       "range_candle": 1793836800000,
       "source": "Binance"
     },
@@ -28,15 +28,15 @@
       "side": "below",
       "armed": true,
       "last_alert_ts": 1795135956.6583786,
-      "last_dist_pct": -8.166,
+      "last_dist_pct": -5.9027,
       "range_candle": 1794787200000,
       "source": "Binance"
     },
     "BTCUSDT_weekly_ema350": {
       "side": "above",
-      "armed": false,
+      "armed": true,
       "last_alert_ts": 1795265809.4798975,
-      "last_dist_pct": 6.6311,
+      "last_dist_pct": 9.2625,
       "range_candle": 1794787200000,
       "source": "Binance"
     }
